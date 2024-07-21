@@ -48,6 +48,49 @@ function submitNote() {
     });
 }
 
+function submitBulkNotes() {
+    const content = document.getElementById('bulk-note-content-input').value;
+
+    if (!content) {
+        alert('Content is required');
+        return;
+    }
+
+    const notes = content.split('\n').filter(note => note.trim() !== '');
+    if (notes.length === 0) {
+        alert('No valid notes to submit.');
+        return;
+    }
+
+    if (!confirm('Are you sure you want to submit these notes?')) {
+        return;
+    }
+
+    fetch('/api/submit_bulk_notes', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ notes })
+    })
+    .then(response => response.json())
+    .then(data => {
+        const statusMessage = document.getElementById('bulk-status-message');
+        statusMessage.innerText = data.message;
+
+        if (!data.error) {
+            document.getElementById('bulk-note-content-input').value = '';
+        }
+
+        setTimeout(() => {
+            statusMessage.innerText = '';
+        }, 3000);
+    })
+    .catch(error => {
+        console.error('Error submitting bulk notes:', error);
+    });
+}
+
 window.addEventListener('beforeunload', (event) => {
     const content = document.getElementById('note-content-input').value;
     if (content) {

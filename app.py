@@ -60,6 +60,21 @@ def submit_note():
     return jsonify({'error': 'Content is required'}), 400
 
 
+@app.route('/api/submit_bulk_notes', methods=['POST'])
+def submit_bulk_notes():
+    notes = request.json.get('notes')
+    if notes:
+        conn = sqlite3.connect('database.db')
+        cursor = conn.cursor()
+        for note in notes:
+            cursor.execute('INSERT INTO notes (content, font) VALUES (?, ?)', (note, 'Arial'))
+        conn.commit()
+        conn.close()
+        return jsonify({'message': 'Bulk notes submitted successfully'})
+    return jsonify({'error': 'No notes to submit'}), 400
+
+
+
 
 @app.route('/api/get_pulled_notes', methods=['GET'])
 def get_pulled_notes():

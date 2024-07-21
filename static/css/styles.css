@@ -87,9 +87,10 @@ body {
     padding: 10px 20px;
     font-size: 1em;
     cursor: pointer;
+    margin-top: 10px;
 }
 
-#status-message {
+#status-message, #bulk-status-message {
     margin-top: 20px;
     font-size: 1.2em;
     color: green;
@@ -107,6 +108,14 @@ body {
     border-radius: 10px;
     display: inline-block;
 }
+
+/* Bulk Note Submission Styles */
+#bulk-note-content-input {
+    width: 80%;
+    height: 200px;
+    margin-bottom: 20px;
+}
+
 
 
 
