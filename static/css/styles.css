@@ -1,0 +1,159 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+#container {
+    margin-top: 50px;
+    text-align: center;
+}
+
+#jar img {
+    width: 200px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+#jar img:hover {
+    transform: scale(1.1);
+}
+
+#note {
+    margin-top: 20px;
+}
+
+#note-content {
+    font-size: 1.5em;
+    margin: 20px;
+    background-color: #fffacd;
+    padding: 20px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+#counter {
+    margin-top: 20px;
+    font-size: 1.2em;
+}
+
+#gallery-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#gallery-button {
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+#gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#gallery .note {
+    background-color: #fffacd;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+/* Note Submission Page Styles */
+#submission-container {
+    margin-top: 50px;
+    text-align: center;
+}
+
+#submission-container textarea {
+    width: 80%;
+    height: 100px;
+    margin-bottom: 20px;
+}
+
+#submission-container select {
+    width: 80%;
+    margin-bottom: 20px;
+}
+
+#submission-container button {
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+#status-message {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: green;
+}
+
+#note-preview {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#preview-content {
+    font-size: 1.5em;
+    background-color: #fffacd;
+    padding: 10px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+
+
+
+
+/* Manage Notes Page Styles */
+#manage-container {
+    margin-top: 50px;
+    text-align: center;
+}
+
+#manage-container h1 {
+    margin-bottom: 20px;
+}
+
+#manage-container h2 {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+#manage-container button {
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    margin: 10px;
+}
+
+#notes-list, #pulled-notes-list {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.note-item, .pulled-note-item {
+    background-color: #fffacd;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.note-item p, .pulled-note-item p {
+    margin: 0;
+    flex-grow: 1;
+}
+
+.note-item button, .pulled-note-item button {
+    margin-left: 10px;
+}

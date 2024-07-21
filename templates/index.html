@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compliment Jar</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <script src="/static/js/scripts.js" defer></script>
+</head>
+<body>
+    <div id="container">
+        <div id="jar" onclick="pullNote()">
+            <img src="/static/images/jar.png" alt="Jar">
+        </div>
+        <div id="note" style="display: none;">
+            <p id="note-content"></p>
+            <button onclick="putAwayNote()">Put Away</button>
+        </div>
+        <div id="counter">
+            <p>Notes left: <span id="notes-left"></span></p>
+        </div>
+        <div id="gallery-button-container">
+            <button id="gallery-button" onclick="showGallery()">View Pulled Notes</button>
+        </div>
+        <div id="gallery" style="display: none;">
+            <!-- Gallery content will be dynamically loaded -->
+        </div>
+    </div>
+</body>
+</html>
