@@ -126,11 +126,12 @@ function toggleGallery() {
                     noteDiv.style.fontFamily = note.font;
                     
                     // Apply scaling and overflow handling for gallery notes
-                    noteDiv.style.maxWidth = '200px';
+                    noteDiv.style.maxWidth = '400px';
                     noteDiv.style.width = 'auto';
                     noteDiv.style.height = 'auto';
-                    noteDiv.style.maxHeight = '100%';
-                    noteDiv.style.overflow = 'hidden';
+                    noteDiv.style.maxHeight = '200px'; // Set a fixed max height
+                    noteDiv.style.overflowY = 'auto'; // Make overflow scrollable vertically
+                    noteDiv.style.overflowX = 'hidden'; // Hide horizontal overflow
 
                     gallery.appendChild(noteDiv);
                 });
