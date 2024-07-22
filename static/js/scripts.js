@@ -8,13 +8,21 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function pullNote() {
+    const jarImg = document.querySelector('#jar img');
+    if (jarImg.classList.contains('clicked')) return;
+
+    jarImg.classList.add('clicked');
     fetch('/api/get_note')
         .then(response => response.json())
         .then(data => {
             if (data.error) {
                 alert(data.error);
+                jarImg.classList.remove('clicked');
+                jarImg.src = '/static/images/jar_empty.png';
                 return;
             }
+            document.querySelector('h1').style.display = 'none';
+            document.querySelector('h3').style.display = 'none';
             const noteContent = document.getElementById('note-content');
             noteContent.innerText = data.content;
             noteContent.style.fontFamily = data.font;
@@ -30,10 +38,27 @@ function pullNote() {
 function putAwayNote() {
     document.getElementById('note').style.display = 'none';
     document.getElementById('jar').style.display = 'block';
+    const jarImg = document.querySelector('#jar img');
+    jarImg.classList.remove('clicked');
     document.getElementById('gallery-button-container').style.display = 'flex';
+    document.querySelector('h1').style.display = 'block';
+    document.querySelector('h3').style.display = 'block';
 }
 
-function showGallery() {
+function toggleGallery() {
+    const gallery = document.getElementById('gallery');
+    const button = document.getElementById('gallery-button');
+    if (gallery.style.display === 'none') {
+        gallery.style.display = 'flex';
+        button.innerText = 'Hide Pulled Notes';
+        loadPulledNotes();
+    } else {
+        gallery.style.display = 'none';
+        button.innerText = 'View Pulled Notes';
+    }
+}
+
+function loadPulledNotes() {
     fetch('/api/get_pulled_notes')
         .then(response => response.json())
         .then(data => {
@@ -46,54 +71,6 @@ function showGallery() {
                 noteElement.style.fontFamily = note.font;
                 gallery.appendChild(noteElement);
             });
-            gallery.style.display = 'flex';
         })
         .catch(error => console.error('Error fetching pulled notes:', error));
 }
-
-function submitNote() {
-    const content = document.getElementById('note-content-input').value;
-    const font = document.getElementById('note-font-input').value;
-
-    if (!content) {
-        alert('Content is required');
-        return;
-    }
-
-    if (!confirm('Are you sure you want to submit this note?')) {
-        return;
-    }
-
-    fetch('/api/submit_note', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ content, font })
-    })
-    .then(response => response.json())
-    .then(data => {
-        const statusMessage = document.getElementById('status-message');
-        statusMessage.innerText = data.message;
-
-        if (!data.error) {
-            document.getElementById('note-content-input').value = '';
-            document.getElementById('note-preview').style.display = 'none';
-        }
-
-        setTimeout(() => {
-            statusMessage.innerText = '';
-        }, 3000);
-    })
-    .catch(error => {
-        console.error('Error submitting note:', error);
-    });
-}
-
-window.addEventListener('beforeunload', (event) => {
-    const content = document.getElementById('note-content-input').value;
-    if (content) {
-        event.preventDefault();
-        event.returnValue = '';
-    }
-});
