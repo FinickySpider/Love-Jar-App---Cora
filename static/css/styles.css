@@ -1,82 +1,100 @@
-/* General Styles */
 body {
     font-family: Arial, sans-serif;
     background-color: #121212;
     color: #ffffff;
     margin: 0;
     padding: 0;
-    text-align: center;
-    background-image: url('/static/images/background.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 100vh;
+    background-image: url('/static/images/background.png');
+    background-size: 25%; /* Scale down the background image */
+    background-repeat: repeat;
+    background-position: center;
+}
+
+#background-window {
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    max-width: 800px; /* Set a maximum width */
+    margin: 20px auto; /* Center horizontally and add vertical margin */
 }
 
 h1, h3 {
     margin: 20px 0;
 }
 
-#container {
-    text-align: center;
-    opacity: 0;
-    animation: fadeIn 2s forwards;
-}
-
 #jar img {
-    width: 200px;
+    width: 400px; /* Fixed size for the jar image */
     cursor: pointer;
     transition: transform 0.3s;
 }
 
-#jar img.clicked {
-    transform: scale(1.1);
-}
-
 #note {
-    margin-top: 20px;
     position: relative;
-    display: none;
-    max-width: 100%;
     background-image: url('/static/images/note_background.png');
     background-size: contain;
     background-repeat: no-repeat;
-    width: 400px;  /* Adjust width as needed */
-    height: 300px; /* Adjust height as needed */
-    margin: 10px auto;
-    padding: 10px;
+    background-position: center; /* Center the background image */
+    width: 80%; /* Set width to a percentage for responsiveness */
+    height: 300px; /* Fixed height */
+    max-width: 600px; /* Limit maximum width */
+    padding: 20px;
     border-radius: 10px;
     box-sizing: border-box;
-}
-
-#note img {
-    display: none; /* Hide the image element inside the note */
+    display: flex;
+    justify-content: flex-start; /* Align content to the top */
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden; /* Hide overflow content */
 }
 
 #note-content {
+    position: absolute; /* Position absolutely within the note */
+    top: 0;
+    left: 10%; /* Reduce width by 10% on the left */
+    right: 10%; /* Reduce width by 10% on the right */
+    bottom: 0;
     color: #000000;
-    font-size: 1.5em;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;  /* Align items to the top */
-    height: 100%;
+    text-align: center; /* Align text to the center */
     word-wrap: break-word;
-    text-align: center;
-    overflow: hidden;
-    padding: 10px;
-}
-
-#counter {
-    margin-top: 20px;
-    font-size: 1.2em;
-}
-
-#gallery-button-container {
+    padding: 20px; /* Add padding on all sides */
+    box-sizing: border-box; /* Include padding in the element's total width and height */
+    font-size: 1.2em; /* Start with a reasonable default font size */
+    overflow: auto; /* Allow scrolling if content overflows */
     display: flex;
-    justify-content: center;
+    justify-content: flex-start; /* Align content to the top */
+    align-items: flex-start; /* Align content to the top */
+    flex-direction: column;
+}
+
+
+#put-away-button {
+    display: none; /* Initially hidden */
+    margin-top: 20px; /* Space between the note and the button */
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #121212;
+    transition: background-color 0.3s;
+}
+
+#put-away-button:hover {
+    background-color: #f0f0f0;
+}
+
+
+#counter, #gallery-button-container {
     margin-top: 20px;
 }
 
@@ -94,15 +112,15 @@ h1, h3 {
     max-height: 400px;
     overflow-y: scroll;
     border: 1px solid #ffffff;
-    padding: 10px;
+    padding: 20px;
 }
 
 .note {
     background-image: url('/static/images/note_background.png');
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     width: 200px; /* Adjust width as needed */
-    height: 150px; /* Adjust height as needed */
+    height: auto;
     margin: 10px;
     padding: 10px;
     border-radius: 10px;
@@ -110,10 +128,11 @@ h1, h3 {
     font-size: 1em;
     display: flex;
     justify-content: center;
-    align-items: flex-start;  /* Align items to the top */
+    align-items: center;  /* Align items to the center */
     cursor: pointer;
     transition: transform 0.3s;
     overflow: hidden;  /* Ensure text doesn't overflow the note */
+    flex-direction: column; /* Ensure vertical alignment */
 }
 
 .note:hover {
@@ -135,7 +154,6 @@ h1, h3 {
     }
 }
 
-/* Note Submission Page Styles */
 #submission-container {
     margin-top: 50px;
     text-align: center;
@@ -178,14 +196,12 @@ h1, h3 {
     display: inline-block;
 }
 
-/* Bulk Note Submission Styles */
 #bulk-note-content-input {
     width: 80%;
     height: 200px;
     margin-bottom: 20px;
 }
 
-/* Manage Notes Page Styles */
 #manage-container {
     margin-top: 50px;
     text-align: center;
