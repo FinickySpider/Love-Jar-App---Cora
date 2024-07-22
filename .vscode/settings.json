@@ -5,7 +5,18 @@
         "**/.hg": true,
         "**/CVS": true,
         "**/.DS_Store": true,
-        "**/Thumbs.db": true
+        "**/Thumbs.db": true,
+        ".Backups": true,
+        ".vscode": true,
+        "__pycache__": true,
+        "vjar": true,
+        "Procfile": true
     },
-    "hide-files.files": []
+    "hide-files.files": [
+        ".Backups",
+        ".vscode",
+        "__pycache__",
+        "vjar",
+        "Procfile"
+    ]
 }

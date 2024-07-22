@@ -42,9 +42,10 @@ h1, h3 {
     display: none;
     max-width: 100%;
     background-image: url('/static/images/note_background.png');
-    background-size: cover;
-    width: 300px;
-    height: 300px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 400px;  /* Adjust width as needed */
+    height: 300px; /* Adjust height as needed */
     margin: 10px auto;
     padding: 10px;
     border-radius: 10px;
@@ -60,11 +61,12 @@ h1, h3 {
     font-size: 1.5em;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;  /* Align items to the top */
     height: 100%;
     word-wrap: break-word;
     text-align: center;
     overflow: hidden;
+    padding: 10px;
 }
 
 #counter {
@@ -97,9 +99,10 @@ h1, h3 {
 
 .note {
     background-image: url('/static/images/note_background.png');
-    background-size: cover;
-    width: 100px;
-    height: 100px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 200px; /* Adjust width as needed */
+    height: 150px; /* Adjust height as needed */
     margin: 10px;
     padding: 10px;
     border-radius: 10px;
@@ -107,9 +110,10 @@ h1, h3 {
     font-size: 1em;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;  /* Align items to the top */
     cursor: pointer;
     transition: transform 0.3s;
+    overflow: hidden;  /* Ensure text doesn't overflow the note */
 }
 
 .note:hover {
