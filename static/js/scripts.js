@@ -94,7 +94,7 @@ function adjustFontSize(textElement, containerElement) {
 
     textElement.style.fontSize = `${fontSize}px`;
 
-    while ((textElement.scrollHeight > maxHeight || textElement.scrollWidth > maxWidth) && fontSize > 20) {
+    while ((textElement.scrollHeight > maxHeight || textElement.scrollWidth > maxWidth) && fontSize > 16) {
         fontSize -= 1;
         textElement.style.fontSize = `${fontSize}px`;
     }
@@ -127,8 +127,8 @@ function toggleGallery() {
                     
                     // Apply scaling and overflow handling for gallery notes
                     noteDiv.style.maxWidth = '400px';
-                    noteDiv.style.width = 'auto';
-                    noteDiv.style.height = 'auto';
+                    noteDiv.style.width = '80%';
+                    noteDiv.style.height = '200px';
                     noteDiv.style.maxHeight = '200px'; // Set a fixed max height
                     noteDiv.style.overflowY = 'auto'; // Make overflow scrollable vertically
                     noteDiv.style.overflowX = 'hidden'; // Hide horizontal overflow
@@ -202,11 +202,12 @@ function updateGallery() {
                 noteDiv.style.fontFamily = note.font;
 
                 // Apply scaling and overflow handling for gallery notes
-                noteDiv.style.maxWidth = '200px';
-                noteDiv.style.width = 'auto';
-                noteDiv.style.height = 'auto';
-                noteDiv.style.maxHeight = '100%';
-                noteDiv.style.overflow = 'hidden';
+                noteDiv.style.maxWidth = '400px';
+                noteDiv.style.width = '80%';
+                noteDiv.style.height = '200px';
+                noteDiv.style.maxHeight = '200px'; // Set a fixed max height
+                noteDiv.style.overflowY = 'auto'; // Make overflow scrollable vertically
+                noteDiv.style.overflowX = 'hidden'; // Hide horizontal overflow
 
                 gallery.appendChild(noteDiv);
             });

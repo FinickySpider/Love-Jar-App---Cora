@@ -44,8 +44,8 @@ h1, h3 {
     background-repeat: no-repeat;
     background-position: center; /* Center the background image */
     width: 80%; /* Set width to a percentage for responsiveness */
-    height: 300px; /* Fixed height */
-    max-width: 600px; /* Limit maximum width */
+    height: 200px; /* Fixed height */
+    max-width: 400px; /* Limit maximum width */
     padding: 20px;
     border-radius: 10px;
     box-sizing: border-box;
@@ -108,8 +108,10 @@ h1, h3 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    /* align-items: center; */
     margin-top: 20px;
     max-height: 400px;
+    width: 720px; /* Set the width for the gallery container */
     max-width: 1000px; /* Set the max width for the gallery container */
     margin: 0 auto; /* Center the gallery container */
     overflow-y: scroll;
@@ -118,27 +120,47 @@ h1, h3 {
 }
 
 .note {
+
     background-image: url('/static/images/note_background.png');
     background-size: cover;
     background-repeat: no-repeat;
-    width: 200px; /* Adjust width as needed */
-    height: 400px;
+    background-position: center; /* Center the background image */
+    width: 80%; /* Set width to a percentage for responsiveness */
+    height: 200px; /* Fixed height */
+    max-width: 400px; /* Limit maximum width */
     margin: 10px;
     padding: 10px;
     border-radius: 10px;
     color: #000000;
-    font-size: 1em;
+    box-sizing: border-box;
     display: flex;
-    justify-content: center;
-    align-items: center;  /* Align items to the center */
-    cursor: pointer;
-    transition: transform 0.3s;
-    overflow: hidden;  /* Ensure text doesn't overflow the note */
-    flex-direction: column; /* Ensure vertical alignment */
+    justify-content: flex-start; /* Align content to the top */
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden; /* Hide overflow content */
+}
+
+.note-content {
+  
+    top: 0;
+    left: 10%; /* Reduce width by 10% on the left */
+    right: 10%; /* Reduce width by 10% on the right */
+    bottom: 0;
+    color: #000000;
+    text-align: center; /* Align text to the center */
+    word-wrap: break-word;
+    padding: 20px; /* Add padding on all sides */
+    box-sizing: border-box; /* Include padding in the element's total width and height */
+    font-size: 1.2em; /* Start with a reasonable default font size */
+    overflow: auto; /* Allow scrolling if content overflows */
+    display: flex;
+    justify-content: flex-start; /* Align content to the top */
+    align-items: flex-start; /* Align content to the top */
+    flex-direction: column;
 }
 
 .note:hover {
-    transform: scale(1.5);
+    transform: scale(1.20);
 }
 
 @keyframes fadeIn {
